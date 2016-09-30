@@ -3,7 +3,7 @@ import {HttpClient} from 'aurelia-http-client';
 export class Restful {
     _cache = {};
 
-    constructor(api_base_path = 'https://apps.blazely.com/sportscom', api_version = 'v1') {
+    constructor(api_base_path = 'https://localhost/lettuce', api_version = 'v1') {
         this._http = new HttpClient().configure(config => {
             config.withBaseUrl(`${api_base_path}/${api_version}`)
                 .withResponseType('json')

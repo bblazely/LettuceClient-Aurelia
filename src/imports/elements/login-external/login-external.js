@@ -138,7 +138,7 @@ export class LoginExternal {
 
         this._loginWindow = window.open(
             /* TODO Replace this with config or env var */
-            `https://apps.blazely.com/sportscom/v1/user/login/external/${s.provider_id_str}`,
+            `https://localhost/lettuce/v1/user/login/external/${s.provider_id_str}`,
             'LoginPopUp',
             `top=${Math.floor(window.screenTop + (window.innerHeight / 2 - s.popup_height / 2))},
              left=${Math.floor(window.screenLeft + (window.innerWidth / 2 - s.popup_width / 2))},
