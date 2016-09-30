@@ -1,0 +1,19 @@
+<template class="select-external-provider">
+    <require from="./styles/select-external-provider.css"></require>
+    <require from="./styles/select-external-provider.anim.css"></require>
+    <require from="global-styles/fontawesome-social-icons.css"></require>
+    <div class="fa-lg external-provider-icons">
+        <span if.bind="providers" repeat.for="[id, p] of providers">
+            <label for="${p.class_name & oneTime}" class="sr-only">${p.display_name}</label>
+            <button id="${p.class_name & oneTime}"
+                    class="external-provider-icon ${p.class_name} ${p.selected ? 'selected' :''} ${p.locked ? 'locked' : ''}"
+                    click.trigger='toggleSelectedState(p)'
+                    disabled.bind="p.disabled"
+                    value.one-time="p.provider_id_str">
+                <i class="fa fa-fw fa-${p.class_name & oneTime}"></i>
+            </button>
+        </span>
+        <div if.bind="providers === false" class="external-provider-icons" t7e="select-external-provider:NO_PROVIDERS"></div>
+        <div if.bind="providers === null"><i class="fa fa-spin fa-fw fa-3x fa-cog"></i></div>
+    </div>
+ </template>

@@ -1,0 +1,119 @@
+<template>
+    <require from="./style/login-internal.css"></require>
+    <require from="value-converters/array-functions"></require>
+    <require from="attributes/auto-focus"></require>
+    <require from="attributes/auto-direction"></require>
+
+    <form class="login-native clearfix" submit.delegate="submit()" validation-errors.bind="errors" validation-renderer="bootstrap-form">
+        <!-- Forgot Password -->
+        <div if.bind="view.is == view.forgot_password">
+            <h4 t="login-internal:LOGIN_FORGOT_PW_HEAD"></h4>
+            <p t="login-internal:LOGIN_FORGOT_PW_PARA"></p>
+        </div>
+
+        <!-- Sign Up Controls -->
+        <div if.bind="view.is == view.sign_up">
+            <div class="form-group">
+                <label class="control-label" for="first_name" accesskey="n">
+                    <span class="fa fa-user fa-fw" aria-hidden="true"></span> <span t="login-internal:DISPLAY_NAME"></span>
+                </label>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input auto-direction="" auto-focus="view.is == view.sign_up" class="stack-top form-control" id="first_name" placeholder="${'login-internal:FIRST_NAME' | t}" type="text" name="first_name" maxlength="64" value.bind="first_name">
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="sr-only" for="last_name" t="login-external:LAST_NAME"></label>
+                        <input auto-direction="" class="stack-bottom form-control" id="last_name" placeholder="${'login-internal:LAST_NAME' | t}" type="text" name="last_name" maxlength="64" value.bind="last_name">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <!-- Verifying Account -->
+            <div if.bind="view.is | in:[view.verify_offline, view.verify_online, view.verify_resend]">
+                <h4 t="login-internal:VERIFY_EMAIL_HEAD"></h4>
+                <p>${ (view.is == view.verify_resend) ? 'login-internal:VERIFY_RESEND_PARA' : 'login-internal:VERIFY_EMAIL_PARA' | t }</p>
+                <p if.bind="view.is != view.verify_resend" t="login-internal:VERIFY_EMAIL_PARA_OFFLINE"></p>
+            </div>
+
+            <div if.bind="view.is == view.verify_online">
+                <div class="hl" t="common:OR"></div>
+                <p t="login-internal:VERIFY_EMAIL_PARA_ONLINE"></p>
+                <div class="form-group">
+                    <!-- This block looks hinky, compare to others and fix it up? -->
+                    <label class="control-label" for="verify_code" accesskey="v">
+                        <span class="fa fa-barcode fa-fw" aria-hidden="true"></span> <span t="login-internal:VERIFY_CODE"></span>
+                    </label>
+                    <input class="form-control" id="verify_code" auto-focus="view.is(VIEW.VERIFY_ONLINE)" placeholder="########" type="code" name="verify_code" ng-model="data.verify_code" ng-minlength="8" ng-maxlength="8" maxlength="8" ng-required="view.is(VIEW.VERIFY_ONLINE)">
+                </div>
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group">
+                <label class="control-label" for="email" accesskey="e">
+                    <span class="fa fa-envelope fa-fw" aria-hidden="true"></span> <span t="login-internal:EMAIL_ADDRESS"></span>
+                </label>
+                <input class="form-control" value.bind="email & validate" id="email" auto-focus.bind="view.is | in:[view.log_in, view.forgot_password]" disabled.bind="view.is | in:[view.verify_online, view.verify_offline, view.verify_resend]">
+            </div>
+
+            <!-- Email Address Confirmation -->
+            <div if.bind="view.is == view.sign_up">
+                <div class="form-group">
+                    <label class="control-label" for="emailConfirm">
+                        <span class="fa fa-envelope fa-fw" aria-hidden="true"></span> <span t="login-internal:CONFIRM_EMAIL_ADDRESS"></span>
+                    </label>
+                    <input class="form-control" value.bind="emailConfirm & validate" id="emailConfirm">
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div if.bind="view.is | in:[view.sign_up, view.log_in]">
+                <div class="form-group">
+                    <label class="control-label" for="password" accesskey="p">
+                        <span class="fa fa-key fa-fw" aria-hidden="true"></span> <span t="login-internal:PASSWORD"></span>
+                    </label>
+                    <input value.bind="password & validate" class="form-control" id="password" type="password" auto-focus.bind="view.is == view.login && email">
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block" t.bind="buttonText"></button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="col-sm-12 login-native-footer">
+            <!-- Forgot Password Prompt -->
+            <div if.bind="view.is == view.log_in" >
+                <div>
+                    <a click.delegate="view.change(view.forgot_pw)" t="LOGIN_FORGOT_PW"></a><br/>
+                    <strong t="LOGIN_NO_ACCOUNT"></strong> <a click.delegate="view.change(view.sign_up)" t="LOGIN_SIGN_UP"></a>
+                </div>
+            </div>
+
+            <!-- Have Account Already? Prompt -->
+            <div if.bind="view.is == view.sign_up">
+                <span t="LOGIN_HAVE_ACCOUNT"></span> <a click.delegate="view.change(view.log_in)" t="COMMON_LOGIN"></a>
+            </div>
+
+            <!-- No Verification Email? -->
+            <div if.bind="view.is == view.verify_online">
+                <div><a click.delegate="view.change(view.verify_resend)" t="LOGIN_NO_VERIFICATION_EMAIL"></a></div>
+            </div>
+
+            <!-- Verification Email Found -->
+            <div if.bind="view.is == view.verify_resend">
+                <div><a click.delegate="showVerification()" t="LOGIN_FOUND_VERIFICATION_EMAIL"></a></div>
+            </div>
+
+            <!-- Remembered Password Prompt -->
+            <div if.bind="view.is == view.forgot_pw">
+                <a click.delegate="view.change(view.log_in)" t="LOGIN_REMEMBER_PW"></a>
+            </div>
+        </div>
+    </form>
+</template>

@@ -1,0 +1,96 @@
+.external-provider-icon {
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 25px;
+    color: #888;
+    background-color: transparent;
+    outline: none;
+    vertical-align: middle;
+    margin: 0 2px;
+    width: 42px;
+    height: 42px;
+}
+
+.external-provider-icon.locked {
+    cursor: default;
+}
+
+.external-provider-icons {
+    height: 42px;
+    text-align: center;
+    max-width: 350px;
+}
+
+.external-provider-icon:not(.locked):hover:enabled {
+    background-color: white;
+    box-shadow: 0 0 10px #888, 0 0 1px #000;
+}
+
+.external-provider-icon.selected, .external-provider-icon:active:enabled:not(.locked) {
+    color: white !important;
+    text-shadow: none !important;
+    border: 2px solid white !important;
+}
+
+.external-provider-icon:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+/* Facebook */
+.external-provider-icon.fb-ico .fa {
+    margin-top: 2px;
+    margin-left: -1px;
+}
+
+.external-provider-icon.fb-ico:not(.locked):hover:enabled {
+    color: #3b5998;
+}
+
+.external-provider-icon.fb-ico.selected, .external-provider-icon.fb-ico:active:enabled:not(.locked) {
+    background-color: #3b5998 !important;
+}
+
+/* Microsoft Live */
+.external-provider-icon.ms-ico .fa {
+    margin-top: -2px;
+    margin-left: -2px;
+}
+
+.external-provider-icon.ms-ico:not(.locked):hover:enabled {
+    color: #4471C6;
+}
+
+.external-provider-icon.ms-ico.selected, .external-provider-icon.ms-ico:active:enabled:not(.locked) {
+    background-color: #4471C6 !important;
+}
+
+/* Google Plus */
+.external-provider-icon.gp-ico .fa {
+    margin-top: 0;
+    margin-left: 2px;
+}
+
+.external-provider-icon.gp-ico:not(.locked):hover:enabled {
+    color: #dd4b39;
+}
+
+.external-provider-icon.gp-ico.selected, .external-provider-icon.gp-ico:active:enabled:not(.locked) {
+    background-color: #dd4b39 !important;
+}
+
+/* Linked In */
+.external-provider-icon.li-ico .fa {
+    margin-left: 1px;
+}
+
+.external-provider-icon.li-ico:not(.locked):hover:enabled {
+    color: #007bb6;
+}
+
+.external-provider-icon.li-ico.selected, .external-provider-icon.li-ico:active:enabled:not(.locked) {
+    background-color: #007bb6 !important;
+}
+

@@ -1,0 +1,9 @@
+<template>
+    <require from="elements/select-external-provider"></require>
+    <require from="elements/loading-overlay"></require>
+    <require from="elements/notification-list"></require>
+
+    <loading-overlay overlay-show.bind="action.is == action.pending"></loading-overlay>
+    <notification-list view-model.ref="r_notificationList"></notification-list>
+    <select-external-provider view-model.ref="r_selectExternalProvider" selected.bind="selectedProvider"></select-external-provider>
+</template>

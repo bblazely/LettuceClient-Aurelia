@@ -1,0 +1,27 @@
+.notification_list li.au-enter-active {
+    animation: notificationListChange 0.5s ease-out;
+}
+
+.notification_list li.au-leave-active {
+    animation: notificationListChange 0.5s ease-in reverse;
+}
+
+@keyframes notificationListChange {
+    0% {
+        transform-origin: 50% 200%;
+        opacity: 0;
+        max-height: 0;
+        transform: scale(0,0);
+    }
+    25% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0.25;
+    }
+    100% {
+        opacity: 1;
+        max-height: 30px;
+        transform: scale(1,1);
+    }
+}

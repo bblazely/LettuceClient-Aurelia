@@ -1,0 +1,17 @@
+/* Work Around for ABP blocking Social Media icons */
+
+.fa-fb-ico:before {
+    content: '\f09a';
+}
+
+.fa-ms-ico:before {
+    content: '\f17a';
+}
+
+.fa-gp-ico:before {
+    content: '\f0d5';
+}
+
+.fa-li-ico:before {
+    content: '\f0e1';
+}

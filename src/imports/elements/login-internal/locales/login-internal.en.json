@@ -1,0 +1,40 @@
+{
+  "LOGIN":                      "Login",
+  "PASSWORD":                         "Password",
+  "DISPLAY_NAME":               "Your Name",
+  "FIRST_NAME":                 "First",
+  "LAST_NAME":                  "Last",
+  "EMAIL_ADDRESS":              "Email Address",
+  "FORGOT_PW":                  "Forgot your password?",
+  "FORGOT_PW_HEAD":             "Oh, you forgot your password?",
+  "FORGOT_PW_PARA":             "Enter the email address you used when you signed up and we'll send you a link to reset it.",
+  "RESET_PW":                   "Reset Password",
+  "SIGN_UP":                    "Sign Up",
+  "NO_ACCOUNT":                 "Don't have an account?",
+  "HAVE_ACCOUNT":               "Already have an account?",
+  "REMEMBER_PW":                "Remembered your password?",
+  "CONFIRM_EMAIL_ADDRESS":      "Confirm Email Address",
+
+  "NO_VERIFICATION_EMAIL":      "Didn't receive a verification email?",
+  "FOUND_VERIFICATION_EMAIL":   "Your verification email just arrived?",
+  "VERIFY_ONLINE":              "Verify My Account",
+  "VERIFY_RESEND":              "Resend Verification Email",
+  "VERIFY_RESEND_PARA":         "If the original verification message didn't arrive, you can request a new one by clicking on the button below.",
+  "VERIFY_EMAIL_HEAD":          "Account Verification Pending",
+  "VERIFY_EMAIL_PARA":          "A verification message was sent to the email address you provided.",
+  "VERIFY_EMAIL_PARA_OFFLINE":  "Click on the link inside it to activate your account.",
+  "VERIFY_EMAIL_PARA_ONLINE":   "Enter the verification code provided.",
+
+  "ERR_PW_SHORT":        "Your password must be at least 8 characters long",
+  "ERR_PW_REQUIRED":     "You must specify a password",
+  "ERR_EMAIL_MISMATCH": "The email addresses must match",
+
+
+  "HELP_PW":             "This password is incorrect",
+  "HELP_NOT_FOUND":      "Account not found! <a click.delegate='alert()' t='login-native:PASSWORD'>${that}</a>?",
+  "HELP_EXISTS":         "Account exists! <a ng-click='view.change(VIEW.FORGOT_PW)'>{{'FORGOT_PW' | translate}}</a>",
+  "HELP_VERIFIED":       "Your account has already been verified, please log in normally.",
+  "HELP_VERIFY_FAIL":    "This code is incorrect",
+  "HELP_VERIFY_LINK_FAIL":"The verification link that you followed is no longer valid, please request a new one.",
+  "HELP_EMAIL_INVALID":  "This email address is not valid"
+}

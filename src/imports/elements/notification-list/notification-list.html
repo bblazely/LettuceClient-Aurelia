@@ -1,0 +1,15 @@
+<template>
+    <require from="./styles/notification-list.css"></require>
+    <require from="./styles/notification-list.anim.css"></require>
+    <require from="value-converters/array-functions"></require>
+
+    <ul class="notification_list">
+        <li repeat.for="e of entries | tail:5" class="au-animate alert alert-${e.severity}">
+            <div class="inner">
+                <span if.bind="e.translate" t7e="${e.text}"></span>
+                <span if.bind="!e.translate">${e.text}</span>
+                <button if.bind="e.closeable" type="button" class="close" aria-label="Close" click.delegate="remove($index)"><span aria-hidden="true">&times;</span></button>
+            </div>
+        </li>
+    </ul>
+</template>

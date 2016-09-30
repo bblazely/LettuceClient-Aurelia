@@ -1,0 +1,8 @@
+<template>
+    <require from="./styles/loading-overlay.css"></require>
+
+    <div class="loading-overlay loading-overlay-${theme} ${(show) ? 'show' : ''}">
+        <img src.bind="spinnerPath"/>
+    </div>
+    <content></content>
+</template>

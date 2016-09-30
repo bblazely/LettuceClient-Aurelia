@@ -1,0 +1,172 @@
+{
+  "name": "Lettuce Client",
+  "type": "project:application",
+  "platform": {
+    "id": "web",
+    "displayName": "Web",
+    "output": "dist"
+  },
+  "transpiler": {
+    "id": "babel",
+    "displayName": "Babel",
+    "fileExtension": ".js",
+    "options": {
+      "plugins": [
+        "transform-es2015-modules-amd"
+      ]
+    },
+    "source": "src/{imports,routes,ext}/**/*.js"
+  },
+  "markupProcessor": {
+    "id": "none",
+    "displayName": "None",
+    "fileExtension": ".html",
+    "source": "src/{imports,routes}/**/*.html"
+  },
+  "staticProcessor": {
+      "id": "static",
+      "displayName": "Static File Resources",
+      "source": ["src/**/*.{png,gif,jpg,svg,css,ico}", "src/**/ext/**", "src/index.html"]
+  },
+  "localesProcessor": {
+      "id": "none",
+      "displayName": "None",
+      "fileExtension": ".json",
+      "source": "src\\**\\locales\\*.json",
+      "output": "dist/locales/"
+  },
+  "cssProcessor": {
+    "id": "sass",
+    "displayName": "Sass",
+    "fileExtension": ".scss",
+    "source": "src/**/*.scss"
+  },
+  "editor": {
+    "id": "webstorm",
+    "displayName": "WebStorm"
+  },
+  "unitTestRunner": {
+    "id": "karma",
+    "displayName": "Karma",
+    "source": "test/unit/**/*.js"
+  },
+  "paths": {
+    "root": "src/imports",
+    "ext": "src/ext",
+    "routes": "src/routes",
+    "services": "src/imports/services",
+    "elements": "src/imports/elements",
+    "attributes": "src/imports/attributes",
+    "valueConverters": "src/imports/value-converters",
+    "bindingBehaviors": "src/imports/binding-behaviors"
+  },
+  "testFramework": {
+    "id": "jasmine",
+    "displayName": "Jasmine"
+  },
+  "build": {
+    "targets": [
+      {
+        "id": "web",
+        "displayName": "Web",
+        "output": "dist"
+      }
+    ],
+    "loader": {
+      "type": "require",
+      "configTarget": "bundles/vendor-bundle.js",
+      "includeBundleMetadataInConfig": "auto",
+      "plugins": [
+        {
+          "name": "text",
+          "extensions": [
+            ".html",
+            ".css"
+          ],
+          "stub": true
+        }
+      ]
+    },
+    "options": {
+      "minify": "stage & prod",
+      "sourcemaps": "dev & stage"
+    },
+    "bundles": [
+      {
+        "name": "bundles/app.js",
+        "source": [
+          "[**/*.js]",
+          "**/*.{css,html}"
+        ]
+      },
+      {
+        "name": "bundles/vendor.js",
+        "prepend": [
+          "./node_modules/bluebird/js/browser/bluebird.core.js",
+          "dist/ext/require.js"
+        ],
+        "dependencies": [
+          "aurelia-binding",
+          "aurelia-bootstrapper",
+          "aurelia-dependency-injection",
+          "aurelia-event-aggregator",
+          "aurelia-framework",
+          "aurelia-history",
+          "aurelia-history-browser",
+          "aurelia-loader",
+          "aurelia-loader-default",
+          "aurelia-logging",
+          "aurelia-logging-console",
+          "aurelia-metadata",
+          "aurelia-pal",
+          "aurelia-pal-browser",
+          "aurelia-path",
+          "aurelia-polyfills",
+          "aurelia-route-recognizer",
+          "aurelia-router",
+          "aurelia-task-queue",
+          "aurelia-templating",
+          "aurelia-templating-binding",
+          "aurelia-http-client",
+          {
+            "name": "i18next-xhr-backend",
+            "path": "./node_modules/i18next-xhr-backend/dist/commonjs",
+            "main": "index"
+          },
+          {
+            "name": "i18next",
+            "path": "./node_modules/i18next/dist/commonjs",
+            "main": "index"
+          },
+          {
+            "name": "aurelia-i18n",
+            "path": "./node_modules/aurelia-i18n/dist/amd",
+            "main": "aurelia-i18n",
+            "deps": [ "i18next" ]
+
+          },
+          {
+            "name": "text",
+            "path": "../dist/ext/text"
+          },
+          {
+            "name": "aurelia-templating-resources",
+            "path": "./node_modules/aurelia-templating-resources/dist/amd",
+            "main": "aurelia-templating-resources"
+          },
+          {
+            "name": "aurelia-templating-router",
+            "path": "./node_modules/aurelia-templating-router/dist/amd",
+            "main": "aurelia-templating-router"
+          },
+          {
+            "name": "aurelia-testing",
+            "path": "./node_modules/aurelia-testing/dist/amd",
+            "main": "aurelia-testing",
+            "env": "dev"
+          }
+        ]
+      }
+    ]
+  }
+}
